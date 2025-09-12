@@ -60,6 +60,8 @@ export default function SingleVlogPost() {
                             <div className="lg:col-span-2 space-y-8">
                                 <div className="relative aspect-video bg-gray-800 rounded-2xl overflow-hidden group">
                                     <Image
+                                        width={100}
+                                        height={100}
                                         src={data.imagePath[index]}
                                         alt={data.title}
                                         className="w-full h-full object-cover"
