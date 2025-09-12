@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "seed": "ts-node src/lib/seed.ts",
-    "dev": "next dev -p 3300",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"
