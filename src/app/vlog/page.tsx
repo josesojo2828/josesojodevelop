@@ -3,7 +3,6 @@
 import CardProject from "@/components/partials/CardProject";
 import Nav from "@/components/sections/Nav";
 import { useVlogStore } from "@/lib/store/storeData";
-import { useEffect, useState } from "react";
 
 export default function VlogPage() {
     const { vlogData } = useVlogStore();

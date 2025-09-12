@@ -1,4 +1,5 @@
 import { RegisterApiData } from "@/types/type"
+import Image from "next/image"
 
 interface Props {
     vlog: RegisterApiData
@@ -60,31 +61,31 @@ export default function Contact({ vlog }: Props) {
                                 {
                                     vlog.about.linkedin &&
                                     <a href={vlog.about.linkedin} target="_blank">
-                                        <img src={'/link.svg'} alt="Linkedin" className="w-10 h-10" />
+                                        <Image src={'/link.svg'} alt="Linkedin" className="w-10 h-10" />
                                     </a>
                                 }
                                 {
                                     vlog.about.github &&
                                     <a href={vlog.about.github} target="_blank">
-                                        <img src={'/github.svg'} alt="Linkedin" className="w-10 h-10" />
+                                        <Image src={'/github.svg'} alt="Linkedin" className="w-10 h-10" />
                                     </a>
                                 }
                                 {
                                     vlog.about.x &&
                                     <a href={vlog.about.x} target="_blank">
-                                        <img src={'/x.svg'} alt="Linkedin" className="w-10 h-10" />
+                                        <Image src={'/x.svg'} alt="Linkedin" className="w-10 h-10" />
                                     </a>
                                 }
                                 {
                                     vlog.about.facebook &&
                                     <a href={vlog.about.facebook} target="_blank">
-                                        <img src={'/fb.svg'} alt="Linkedin" className="w-10 h-10" />
+                                        <Image src={'/fb.svg'} alt="Linkedin" className="w-10 h-10" />
                                     </a>
                                 }
                                 {
                                     vlog.about.instagram &&
                                     <a href={vlog.about.instagram} target="_blank">
-                                        <img src={'/ig.svg'} alt="Linkedin" className="w-10 h-10" />
+                                        <Image src={'/ig.svg'} alt="Linkedin" className="w-10 h-10" />
                                     </a>
                                 }
                             </div>

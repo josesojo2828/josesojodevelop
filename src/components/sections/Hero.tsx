@@ -1,6 +1,5 @@
 import { RegisterApiData } from "@/types/type";
 import PrintSkils from "../partials/PrintSkils";
-import { useVlogStore } from "@/lib/store/storeData";
 import Link from "next/link";
 
 interface Props {

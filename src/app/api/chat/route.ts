@@ -1,11 +1,11 @@
-import { PROJECTS, ABOUT_INFO, SKILS_LIST } from "@/data/dataset";
+import { VLOGS, ABOUT_INFO, SKILS_LIST } from "@/data/dataset";
 import { NextResponse } from "next/server";
 import axios from "axios";
 import { ApiResponse } from "@/types/requets";
 
 const docs = [
     ...ABOUT_INFO.map(a => ({ type: "about", text: `${a.title}: ${a.description}` })),
-    ...PROJECTS.map(p => ({ type: "project", text: `${p.title}: ${p.description}` })),
+    ...VLOGS.map(p => ({ type: "project", text: `${p.title}: ${p.description}` })),
     ...SKILS_LIST.map(s => ({ type: "skill", text: s.name })),
 ];
 

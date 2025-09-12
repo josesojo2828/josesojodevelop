@@ -1,4 +1,5 @@
-import { Candidate } from "@/types/requets";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import axios from "axios";
 import { create } from "zustand";
 

@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { NextResponse } from "next/server";
 import { INFO, SKILS_LIST, VLOGS } from "@/data/dataset";
 import { PrismaClient } from "@prisma/client";

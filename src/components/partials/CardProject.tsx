@@ -1,5 +1,4 @@
 import { Vlog } from "@/types/type";
-import PrintSkils from "./PrintSkils";
 import Link from "next/link";
 
 export default function CardProject({ project }: { project: Vlog }) {

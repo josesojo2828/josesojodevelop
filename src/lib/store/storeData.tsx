@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 // src/store/useVlogStore.ts
 import { RegisterApiData, RegisterVlogStore } from '@/types/type';
 import { create } from 'zustand';

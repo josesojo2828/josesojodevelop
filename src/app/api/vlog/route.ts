@@ -1,7 +1,6 @@
 import { PrismaClient } from "@prisma/client";
-import { prisma } from "../../../lib/prisma";
 
-export async function GET(req: Request) {
+export async function GET() {
   try {
 
     // GET ALL INFO

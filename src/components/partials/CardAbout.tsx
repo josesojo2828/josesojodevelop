@@ -1,4 +1,4 @@
-import { Database, Dock, Ear, Monitor, Navigation, Server, Shell } from "lucide-react"
+import { Database, Dock, Monitor, Server } from "lucide-react"
 
 export default function CardAbout({ description,title }: { title:string, description:string }) {
 

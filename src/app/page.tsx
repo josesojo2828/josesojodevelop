@@ -18,7 +18,7 @@ export default function Home() {
   // const fetchProjects = usePortfolioStore((state) => state.fetchProjects);
   // const fetchExperiences = usePortfolioStore((state) => state.fetchExperiences);
 
-  useEffect(() => {fetchVlogData()}, []);
+  useEffect(() => {fetchVlogData()}, [fetchVlogData]);
 
   return isLoading ? <></> : vlogData && (
     <div className="min-h-screen flex flex-col bg-white text-gray-800">

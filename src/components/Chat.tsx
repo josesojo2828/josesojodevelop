@@ -4,9 +4,7 @@ import { useChatStore } from "@/store/chatStorage";
 import { Bot, MessageCircle, Minimize2, Send, User } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
-interface Props {}
-
-export default function Chat({  }: Props) {
+export default function Chat() {
     const { messages, sendMessage } = useChatStore();
 
     const [inputText, setInputText] = useState('');
