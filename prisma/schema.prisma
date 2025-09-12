@@ -1,0 +1,91 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Vlog {
+  id          Int      @id @default(autoincrement())
+
+  imagePath   Json
+
+  title       String
+  slogan      String
+  description String
+  year        Int
+  
+  linkToGithub    String?
+  linkToX         String?
+  linkToTiktok    String?
+  linkToFacebook  String?
+  linkToLinkeind  String?
+
+  startDate   DateTime
+  endDate     DateTime?
+
+  skils       VlogSkill[]
+
+  project     Boolean @default(false)
+  primary     Boolean @default(false)
+}
+
+model Experience {
+  id          Int      @id @default(autoincrement())
+  company     String
+  role        String
+  description String?
+  startDate   DateTime
+  endDate     DateTime?
+  skills      ExperienceSkill[]
+}
+
+model About {
+  id        Int    @id @default(autoincrement())
+  fullName  String
+  bio       String
+  email     String
+  country   String?
+  phone     String?
+  location  String?
+  linkedin  String?
+  x         String?
+  facebook  String?
+  github    String?
+  tiktok    String?
+  instagram String?
+  website   String?
+
+  presentationSkils Json?
+}
+
+model VlogSkill {
+  vlogId Int
+  skillId   Int
+  vlog   Vlog @relation(fields: [vlogId], references: [id])
+  skill     Skill   @relation(fields: [skillId], references: [id])
+  @@id([vlogId, skillId])
+}
+
+model ExperienceSkill {
+  experienceId Int
+  skillId      Int
+  experience   Experience @relation(fields: [experienceId], references: [id])
+  skill        Skill      @relation(fields: [skillId], references: [id])
+  @@id([experienceId, skillId])
+}
+
+model Skill {
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String
+  type        String
+  logo        String   // URL del logo o path
+  projects    VlogSkill[]
+  experiences ExperienceSkill[]
+}
