@@ -1,70 +1,41 @@
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
-    let body;
     try {
-        // Debes parsear el cuerpo de la solicitud JSON manualmente.
-        body = await req.json();
-    } catch (error) {
-        console.error("Error al parsear el cuerpo de la solicitud:", error);
-        return NextResponse.json({ error: 'Formato de solicitud no válido.' }, { status: 400 });
-    }
+        const { name, email, message } = await req.json();
 
-    const { name, email, message } = body;
+        const token = process.env.TELEGRAM_BOT_TOKEN;
+        const chatId = process.env.TELEGRAM_CHAT_ID;
 
-    // Validar que los datos no estén vacíos
-    if (!name || !email || !message) {
-        return NextResponse.json({ error: 'Todos los campos son requeridos.' }, { status: 400 });
-    }
+        // Detectar si estamos en local (Venezuela) o en Vercel
+        const isLocal = process.env.NODE_ENV === 'development';
 
-    const botToken = process.env.TELEGRAM_BOT_TOKEN;
-    const groupId = process.env.TELEGRAM_GROUP_ID;
+        // Proxy alternativo (si uno falla, probamos otro)
+        // Puedes intentar con 'api.telegram.org.run' o 'tapi.bale.ai'
+        const baseUrl = isLocal
+            ? "https://tapi.bale.ai"
+            : "https://api.telegram.org";
 
-    if (!botToken || !groupId) {
-        console.error("Variables de entorno de Telegram no configuradas");
-        return NextResponse.json({ error: 'Error de configuración en el servidor.' }, { status: 500 });
-    }
+        const text = `📬 *Nuevo mensaje*\n*De:* ${name}\n*Email:* ${email}\n*Mensaje:* ${message}`;
 
-    // Formatear el mensaje para Telegram
-    const text = `
-📬 **Nuevo Mensaje del Formulario** 📬
-
-**Nombre:** ${name}
-**Correo:** ${email}
-
-**Mensaje:**
-${message}
-    `;
-
-    // URL de la API de Telegram para enviar mensajes
-    const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
-
-    console.log(url);
-    console.log(groupId);
-    console.log(botToken);
-    try {
-        const response = await fetch(url, {
+        const response = await fetch(`${baseUrl}/bot${token}/sendMessage`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                chat_id: groupId,
+            body: JSON.stringify({ // ¡Asegúrate de que solo haya UNA llave aquí!
+                chat_id: chatId,
                 text: text,
                 parse_mode: 'Markdown',
             }),
         });
 
-        const data = await response.json();
-
-        if (!data.ok) {
-            console.error('Error de la API de Telegram:', data);
-            return NextResponse.json({ error: 'No se pudo enviar el mensaje.' }, { status: 500 });
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(JSON.stringify(errorData));
         }
 
-        // Éxito
-        return NextResponse.json({ message: 'Mensaje enviado con éxito!' }, { status: 200 });
-
+        return NextResponse.json({ message: 'Enviado' });
     } catch (error) {
-        console.error('Error al enviar el mensaje:', error);
-        return NextResponse.json({ error: 'Error interno del servidor.' }, { status: 500 });
+        console.error("Error detallado:", error);
+        return NextResponse.json({ error: 'Fallo al enviar' }, { status: 500 });
     }
 }
