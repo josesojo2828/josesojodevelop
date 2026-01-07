@@ -21,7 +21,7 @@ export default function Home() {
   useEffect(() => {fetchVlogData()}, [fetchVlogData]);
 
   return isLoading ? <></> : vlogData && (
-    <div className="min-h-screen flex flex-col bg-white text-gray-800">
+    <div className="min-h-screen flex flex-col text-gray-800">
       <Nav />
 
       <Hero vlog={vlogData} />

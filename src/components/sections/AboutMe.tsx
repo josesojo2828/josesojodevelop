@@ -13,7 +13,7 @@ export default function AboutMe({ vlog }: Props) {
 
 
     return (
-        <section id="about" className="py-20 px-8 bg-gray-50">
+        <section id="about" className="py-20 px-8 border-y border-gray-200">
             <div className="max-w-7xl mx-auto">
                 <div className="flex flex-col lg:flex-row items-start gap-16">
                     <div className="lg:w-1/3">
