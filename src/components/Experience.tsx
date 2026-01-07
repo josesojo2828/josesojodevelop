@@ -3,37 +3,34 @@ import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { useRef, useMemo } from "react";
 import * as THREE from "three";
 
-function FloatingShape({ geometry, positionFactor, color }: any) {
+// Definimos la interfaz para las props del componente
+interface FloatingShapeProps {
+    geometry: THREE.BufferGeometry;
+    positionFactor: [number, number, number]; // Un array de 3 números
+    color: string;
+}
+
+function FloatingShape({ geometry, positionFactor, color }: FloatingShapeProps) {
     const meshRef = useRef<THREE.Mesh>(null!);
-    // viewport nos da el ancho y alto visible en unidades 3D
     const { viewport, mouse } = useThree();
     const randomFactor = useMemo(() => Math.random(), []);
 
     useFrame((state) => {
         if (!meshRef.current) return;
 
-        // Calculamos la posición base según el tamaño actual de la ventana
-        // positionFactor[0] es X (-0.5 es izquierda, 0.5 es derecha)
-        // positionFactor[1] es Y (-0.5 es abajo, 0.5 es arriba)
         const baseX = viewport.width * positionFactor[0];
         const baseY = viewport.height * positionFactor[1];
-
         const time = state.clock.getElapsedTime();
 
-        // 1. Movimiento flotante
         const floatY = Math.cos(time + randomFactor) * 0.3;
         const floatX = Math.sin(time + randomFactor) * 0.3;
 
-        // 2. Reacción al Mouse (Efecto de alejarse)
-        // Multiplicamos por un factor para que el movimiento sea proporcional al viewport
-        const mouseConstraint = 1.5;
         const targetX = baseX + (mouse.x * viewport.width * 0.05);
         const targetY = baseY + (mouse.y * viewport.height * 0.05);
 
-        // Aplicamos la posición con una transición suave (lerp)
         meshRef.current.position.x = THREE.MathUtils.lerp(meshRef.current.position.x, targetX + floatX, 0.1);
         meshRef.current.position.y = THREE.MathUtils.lerp(meshRef.current.position.y, targetY + floatY, 0.1);
-        meshRef.current.position.z = positionFactor[2]; // La profundidad se mantiene fija
+        meshRef.current.position.z = positionFactor[2];
 
         meshRef.current.rotation.x += 0.005;
         meshRef.current.rotation.y += 0.005;
