@@ -10,6 +10,7 @@ import { useEffect } from "react";
 // import Chat from "@/components/Chat";
 import { useVlogStore } from "@/lib/store/storeData";
 import Services from "@/components/sections/Service";
+import Testimonials from "@/components/sections/Testimonio";
 
 export default function Home() {
 
@@ -19,7 +20,7 @@ export default function Home() {
   // const fetchProjects = usePortfolioStore((state) => state.fetchProjects);
   // const fetchExperiences = usePortfolioStore((state) => state.fetchExperiences);
 
-  useEffect(() => {fetchVlogData()}, [fetchVlogData]);
+  useEffect(() => { fetchVlogData() }, [fetchVlogData]);
 
   return isLoading ? <></> : vlogData && (
     <div className="min-h-screen flex flex-col text-gray-800">
@@ -33,6 +34,7 @@ export default function Home() {
       <Services />
 
       <AboutMe vlog={vlogData} />
+      <Testimonials />
       <Contact data={vlogData} />
 
       <Footer />
