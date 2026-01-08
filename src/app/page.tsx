@@ -24,11 +24,11 @@ export default function Home() {
     <div className="min-h-screen flex flex-col text-gray-800">
       <Nav />
 
-      <Hero vlog={vlogData} />
+      <Hero data={vlogData} />
       <Work vlog={vlogData} />
 
       <AboutMe vlog={vlogData} />
-      <Contact vlog={vlogData} />
+      <Contact data={vlogData} />
 
       <Footer />
 

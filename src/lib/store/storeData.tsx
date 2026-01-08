@@ -32,6 +32,7 @@ export const useVlogStore = create<RegisterVlogStore>()(
             },
 
             clearVlogData: () => {
+                return null;
                 set({ vlogData: null });
             },
         }),

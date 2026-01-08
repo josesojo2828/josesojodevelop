@@ -67,6 +67,7 @@ export interface Skill {
   description: string;
   type: string;
   logo: string;
+  color: string;
   projects?: VlogSkill[];
   experiences?: ExperienceSkill[];
 }
@@ -170,3 +171,50 @@ export interface RegisterVlogStore {
   fetchVlogData: () => Promise<void>;
   clearVlogData: () => void;
 }
+
+import React from 'react';
+
+// Interfaces basadas en tu esquema de datos (Tipado fuerte)
+export interface About {
+    id: number;
+    fullName: string;
+    bio: string;
+    email: string;
+    country?: string;
+    phone?: string;
+    location?: string;
+    linkedin?: string;
+    github?: string;
+    website?: string;
+    presentationSkils?: any;
+    facebook: string;
+    instagram: string;
+    tiktok: string;
+    x: string;
+}
+
+export interface Skill {
+    id: number;
+    name: string;
+    description: string;
+    type: string;
+    logo: string;
+    color: string;
+}
+
+
+export interface RegisterApiData {
+    about: About;
+    skils: Skill[];
+    vlog: Vlog[];
+    project: Vlog[];
+}
+
+/**
+ * Sub-componente para imprimir habilidades
+ * Fuertemente tipado con la interfaz Skill[]
+ */
+interface InternalPrintSkilsProps {
+    skils: Skill[];
+}
+
