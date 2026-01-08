@@ -1,4 +1,3 @@
-import { VLOGS, ABOUT_INFO, SKILS_LIST } from "@/data/dataset";
 import { NextResponse } from "next/server";
 import axios from "axios";
 import { ApiResponse } from "@/types/requets";
