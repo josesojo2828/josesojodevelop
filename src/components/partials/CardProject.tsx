@@ -6,7 +6,6 @@ export default function CardProject({ project }: { project: Vlog }) {
     const skills = project.skils || [];
 
     // Mapeamos las habilidades para pasarlas al componente PrintSkils
-    const customSkils = skills.map(it => it.skill);
 
     return (
         <div
@@ -52,7 +51,7 @@ export default function CardProject({ project }: { project: Vlog }) {
                     </p>
 
                     <div className="mb-6">
-                        <PrintSkils skils={customSkils} w={5} />
+                        <PrintSkils skils={skills} w={5} />
                     </div>
 
                     <div className="flex items-center justify-between pt-5 border-t border-white/5">

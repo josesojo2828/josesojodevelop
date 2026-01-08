@@ -12,9 +12,9 @@ export interface Vlog {
   linkToTiktok?: string;
   linkToFacebook?: string;
   linkToLinkeind?: string;
-  startDate: Date;
-  endDate?: Date;
-  skils: VlogSkill[];
+  startDate: Date | string;
+  endDate?: Date | string;
+  skils: Skill[];
   project: boolean;
   primary: boolean;
 }
@@ -24,8 +24,8 @@ export interface Experience {
   company: string;
   role: string;
   description?: string;
-  startDate: Date;
-  endDate?: Date;
+  startDate: Date | string;
+  endDate?: Date | string;
   skills: ExperienceSkill[];
 }
 
@@ -68,7 +68,7 @@ export interface Skill {
   type: string;
   logo: string;
   color: string;
-  projects?: VlogSkill[];
+  projects?: Skill[];
   experiences?: ExperienceSkill[];
 }
 
@@ -77,8 +77,8 @@ export interface Experience {
   company: string;
   role: string;
   description?: string;
-  startDate: Date;
-  endDate?: Date;
+  startDate: Date | string;
+  endDate?: Date | string;
   skills: ExperienceSkill[];
 }
 
@@ -97,9 +97,9 @@ export interface RegisterVlog {
   linkToTiktok?: string;
   linkToFacebook?: string;
   linkToLinkeind?: string;
-  startDate: Date;
-  endDate?: Date;
-  skils: VlogSkill[];
+  startDate: Date | string;
+  endDate?: Date | string;
+  skils: Skill[];
   project: boolean;
   primary: boolean;
 }
@@ -109,8 +109,8 @@ export interface RegisterExperience {
   company: string;
   role: string;
   description?: string;
-  startDate: Date;
-  endDate?: Date;
+  startDate: Date | string;
+  endDate?: Date | string;
   skills: ExperienceSkill[];
 }
 
@@ -148,7 +148,7 @@ export interface RegisterSkill {
   description: string;
   type: string;
   logo: string;
-  projects?: VlogSkill[];
+  projects?: Skill[];
   experiences?: ExperienceSkill[];
 }
 
@@ -163,13 +163,13 @@ export interface RegisterApiData {
 // Interfaz para el Store de Zustand
 export interface RegisterVlogStore {
   // Estado de los datos y su carga
-  vlogData: RegisterApiData | null;
+  vlogData: RegisterApiData;
   isLoading: boolean;
   error: string | null;
 
   // Acciones (métodos para interactuar con el estado)
-  fetchVlogData: () => Promise<void>;
-  clearVlogData: () => void;
+  // fetchVlogData: () => Promise<void>;
+  // clearVlogData: () => void;
 }
 
 import React from 'react';

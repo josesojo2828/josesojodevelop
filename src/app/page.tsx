@@ -11,16 +11,17 @@ import { useEffect } from "react";
 import { useVlogStore } from "@/lib/store/storeData";
 import Services from "@/components/sections/Service";
 import Testimonials from "@/components/sections/Testimonio";
+import TopWork from "@/components/sections/TopWork";
 
 export default function Home() {
 
-  const { fetchVlogData, isLoading, vlogData } = useVlogStore();
+  const { isLoading, vlogData } = useVlogStore();
 
   // const fetchSkills = usePortfolioStore((state) => state.fetchSkills);
   // const fetchProjects = usePortfolioStore((state) => state.fetchProjects);
   // const fetchExperiences = usePortfolioStore((state) => state.fetchExperiences);
 
-  useEffect(() => { fetchVlogData() }, [fetchVlogData]);
+  // useEffect(() => { fetchVlogData() }, [fetchVlogData]);
 
   return isLoading ? <></> : vlogData && (
     <div className="min-h-screen flex flex-col text-gray-800">
@@ -29,7 +30,8 @@ export default function Home() {
       <div className="mt-16 lg:mt-4"></div>
 
       <Hero data={vlogData} />
-      <Work vlog={vlogData} />
+      <TopWork vlog={vlogData} />
+      {/* <Work vlog={vlogData} /> */}
 
       <Services />
 

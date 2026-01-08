@@ -264,21 +264,6 @@ export default function Services() {
                     </div>
                 </div>
             </div>
-
-            <div className="max-w-7xl mx-auto relative z-10 px-6">
-                <div className="mt-12 pt-10 border-t border-zinc-200 flex flex-col md:flex-row justify-between items-center gap-4 opacity-50 font-mono text-[9px] text-zinc-500 uppercase tracking-widest font-bold">
-                    <div className="flex items-center gap-4">
-                        <span className="flex items-center gap-2">
-                            <span className={`w-1.5 h-1.5 rounded-full ${isPaused ? 'bg-amber-500' : 'bg-blue-500 animate-pulse'}`}></span>
-                            {isPaused ? 'NAV_MANUAL_MODE' : 'AUTO_SCROLL_ENABLED'}
-                        </span>
-                        <span>/</span>
-                        <span>Performance: Optimized</span>
-                    </div>
-                    <span className="hidden md:block">Strategy: Tailored_to_Business</span>
-                    <span className="hidden md:block">Status: Verified_Architecture</span>
-                </div>
-            </div>
         </section>
     );
 }
