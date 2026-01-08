@@ -9,6 +9,7 @@ import Footer from "@/components/sections/Footer";
 import { useEffect } from "react";
 // import Chat from "@/components/Chat";
 import { useVlogStore } from "@/lib/store/storeData";
+import Services from "@/components/sections/Service";
 
 export default function Home() {
 
@@ -28,6 +29,8 @@ export default function Home() {
 
       <Hero data={vlogData} />
       <Work vlog={vlogData} />
+
+      <Services />
 
       <AboutMe vlog={vlogData} />
       <Contact data={vlogData} />
