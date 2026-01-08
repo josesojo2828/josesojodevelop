@@ -24,6 +24,8 @@ export default function Home() {
     <div className="min-h-screen flex flex-col text-gray-800">
       <Nav />
 
+      <div className="mt-16 lg:mt-4"></div>
+
       <Hero data={vlogData} />
       <Work vlog={vlogData} />
 
